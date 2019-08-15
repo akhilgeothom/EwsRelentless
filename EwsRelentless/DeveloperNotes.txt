@@ -1,0 +1,81 @@
+﻿
+==============
+Build History:
+==============
+
+3/29:
+Added more tests and additional screen logging.
+It now has milliseconds in processing time.
+The time of each log entry is on the left.
+Time on the log entries now has milliseconds.
+The output is better formatted.
+Pass /Silent after the file name and suppress all output except for the intro/starting text.
+The initial screen says to press control-c to end processing and there is second delay after that.  This text does not suppress.
+I can easily change around the log format more easily.
+It does not log to file, but you can redirect to a text file if needed.  Redirecting to a file is going to be much more preferred over the code writing to a file because it would require some thread sync code which would slow things down a little – cannot have lots of threads writing to the same file at one time via code without running into issues. Redirection to a file of stuff always printed to the screen should work around those limitations. 
+
+
+3/29
+fixed formatting of screen logging to make it look more even visually
+test numbers were one off - caused by bug introduced when the ability to handle a header line in the config was added
+Now supports sending of very, very basic email. See "SendEmail".
+Now supports 4 parameters
+SearchInbox now has the abilty to only return item ids instead of always returning many properties including the message body.
+Made the ReadMe file format a little easier to read.
+Added /LogAsCSV switch.
+ItemsSearch on the Categories field was changed to ItemClass. 
+Cleaned-up some of the text in the logging.
+
+4/2
+Command-line parameters are now case-insensitive
+Added abiltiy to log CSV to a filename
+Pressing X ends processing rather than the user needing to press control-c
+Fixed issues with CSV headers. Verified loading of CSV into Excel.
+
+4/24/2013
+Cleaned-up readme file. 
+Release of 1.0
+ 
+5/13/2013
+Started on 1.1 version
+Now works with Exchange 2013 and 2010_SP2 schema - If statments were missing.
+
+5/17/2013
+The connection limit was at default (2 per site), I increased this to 65000. 
+The reason for doing this is that this tool should not have its own restrictions.
+
+Added, but not yet tested:
+    Added code to do Impersonation only
+    Added code to pick directURl, Do autodiscover, do autodisocver processe but don't do the SCP lookups.
+    Added a test to do autodiscover testing only.  This will create a session object per thread.
+	Still in progress..  Do not use app until tested.
+ 
+9/10/2013
+Started version 1.2
+Added /TrustAllCerts paramater to suppress basic certificate checks.  This will make all certificates trusted.
+NOTE:  Need to rework command line parameters so that each parameter will be serached for in the arguments.  This is 
+  needed since the number of parameters being passed and their optional presense is getting too complex to handle
+  by just if statements.
+A problem pulling the source was brought to my attention.  I fixed the code check-in issue.  You should now be able to pull the full source.
+
+
+==============
+Planed:
+==============
+
+	Test all changes since 5/17/2013
+
+	Finish work on TrustAllCerts
+
+	Add ability to resolve a specified number of recipients.
+
+	Add a search on random key words and retrieve the first n results.  n is specified in the config file.  If not specified it should 
+	return a random max number of entries between 100 and 500.
+
+	Add the ability to do random searches of the calendar with dates between now and 3 months.
+
+	Need to rework command line parameters so that each parameter will be serached for in the arguments.  This is needed since the number of 
+	parameters being passed and their optional presense is getting too complex to handle by just if statements.
+
+	Release 1.2
+
